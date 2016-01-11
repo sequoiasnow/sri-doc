@@ -1,0 +1,81 @@
+name: Example Item
+
+description: >
+    The following is a description of the item. This may go on for as long, or
+    as short as you may desire. In this case the configuration file is parsed to
+    treat line breaks as spaces. Thats due to the opening '>' in place of the
+    typical pype character.
+
+# The parent group to which the item belongs. If that group belongs to a parant
+# that will be accounted for.
+group: example-group
+
+# An array of images for the current item. Images can have a name, description,
+# and even a link. However, they can also just consist of a file name.
+images:
+    - name: The Moon
+      description: >
+        Luna, its pretty cool, both in the slang sense and the actual sense.
+
+      file: 'moon.png'
+
+    - name: Mars
+      description: That angry looking red planet. Get the pun?
+      file: 'mars.png'
+
+
+# Locations where the current item is used. Put this in with info of the
+# locations or with the machine name of the location, which is an item.
+locations_used:
+    - location-example-one
+
+# Tasks are blocks of contents on how to do certain things. There are also
+# various formats that can occur. If at any time a format of either
+# text/html/markdown can be specified.
+tasks:
+    - name: Set up Item
+      format: html
+      content: >
+        <p>Setting up this item is pretty simple, its not much work at all</p>
+
+        <ol>
+            <li>Fill out the configuration file in yaml.</li>
+            <li>Ensure the configuration file is correct.</li>
+            <li>Upload necessary files with proper names</li>
+            <li>Look at what you got on the site, see what happens</li>
+            <li>Be happy I can't think of any more bullet points</li>
+        </ol>
+
+    - name: Lorem Ipsum
+      format: 'markdown'
+      content: |
+        #Lorem Ipsum Dolor Sit Amet C
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+        Donec elementum ligula eu sapien consequat eleifend
+
+    - name: Html Ipsum
+      format: html
+      content: >
+        <ul>
+        	<li>Lorem ipsum dolor</li>
+        	<li>Sit amet, consectetur</li>
+        	<li>Adipisicing elit, sed</li>
+        	<li>Do eiusmod tempor</li>
+        	<li>Incididunt ut labore</li>
+        	<li>Et dolore magna</li>
+        	<li>Aliqua. Ut enim</li>
+        </ul>
+
+
+# List all downloadable files that this links to.
+files:
+    - name: Example File 1
+      description: A file that shows how to use this example.
+      path: example-item/file1.pdf
+
+    - name: Example File 2
+      description: Another file that shows how to use this example.
+      path: example-item/file2.pdf
