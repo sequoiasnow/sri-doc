@@ -103,3 +103,18 @@ function get_file($file) {
 
     return "data/files/$file";
 }
+
+/**
+ * Loads a template file with the given data if provided. A bit of a relative
+ * type of include.
+ *
+ * @param string $file
+ * @param mixed $data
+ */
+function load_tmpl($file, $data = array()) {
+    $file = "tmpl/$file.php";
+
+    if ( file_exists($file) ) {
+        include $file;
+    }
+}
