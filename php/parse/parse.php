@@ -88,6 +88,38 @@ class YamlData implements ArrayAccess {
             $file['path'] = get_file($file['path']);
         }
 
+        //  Transform the groups into individual yamldata objects. In so doing,
+        //  recursion is invoked, each arent object is then added to a group
+        //  of 'parents'
+        if ( isset( $data['group'] ) ) {
+            $data['group'] = new self('groups/' . $data['group']);
+            $data['groups'] = array();
+
+            $currentGroup = $data['group'];
+
+            while ( $currentGroup ) {
+                $data['groups'][] = $currentGroup;
+
+                if ( isset( $currentGroup['group'] ) ) {
+                    $currentGroup = $currentGroup['group'];
+                } else {
+                    break;
+                }
+            }
+
+            // Set up a url to access the item at, this allows for a reference to
+            // the current item.
+            $url = '';
+
+            foreach ( $data['groups'] as $group ) {
+                $url .= $group->machine_name . '/';
+            }
+
+            $this->data['url'] = $url . '/' . $this->machine_name;
+        } else {
+            $this->data['url'] = $this->machine_name;
+        }
+
         $this->data = $data;
     }
 
@@ -98,6 +130,7 @@ class YamlData implements ArrayAccess {
      * @param string $file
      */
     public function __construct($file) {
+        $this->machineName = $file;
         $this->content = file_get_contents("data/{$file}.yml");
         $this->data    = __YML($this->content);
 
