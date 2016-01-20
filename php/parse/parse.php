@@ -27,65 +27,73 @@ class YamlData implements ArrayAccess {
 
         // Loop through base level data in order to render simple string data.
         foreach ( $escapeKeys as $key ) {
-            if ( ! is_array($data[$key]) && isset( $data[$key] ) ) {
+            if ( isset( $data[$key] ) && ! is_array($data[$key]) ) {
                 __S($data[$key]);
             }
         }
 
-        // Loop through the images to establish their variables.
-        foreach ( $data['images'] as &$image ) {
-            if ( isset( $image['name'] ) ) {
-                __S($image['name']);
-            }
-
-            if ( isset( $image['description'] ) ) {
-                __S($image['description']);
-            }
-
-            $image['file'] = get_image($image['file']);
-        }
-
-        // Establish the locations used, these are given by data items, and are
-        // stored in the locations used.
-        foreach ( $data['locations_used'] as &$location ) {
-            if ( is_array($location) ) {
-                if ( isset( $location['name'] ) ) {
-                    __S($location['name']);
+        if ( isset( $data['images'] ) ) {
+            // Loop through the images to establish their variables.
+            foreach ( $data['images'] as &$image ) {
+                if ( isset( $image['name'] ) ) {
+                    __S($image['name']);
                 }
 
-                if ( isset( $location['description'] ) ) {
-                    __S($location['description']);
+                if ( isset( $image['description'] ) ) {
+                    __S($image['description']);
                 }
-            } else {
-                if ( self::isFile("items/$location") ) {
-                    $location = new self("items/$location");
-                }
+
+                $image['file'] = get_image($image['file']);
             }
         }
 
-        // The taks of the current item will be rendered from the task form.
-        foreach ( $data['tasks'] as &$task ) {
-            __S($task['name']);
-            $method = '__';
+        if ( isset( $data['locations_used'] ) ) {
+            // Establish the locations used, these are given by data items, and are
+            // stored in the locations used.
+            foreach ( $data['locations_used'] as &$location ) {
+                if ( is_array($location) ) {
+                    if ( isset( $location['name'] ) ) {
+                        __S($location['name']);
+                    }
 
-            if ( isset($task['format']) && $task['format'] == 'markdown' ) {
-                $method = '__MD';
+                    if ( isset( $location['description'] ) ) {
+                        __S($location['description']);
+                    }
+                } else {
+                    if ( self::isFile("items/$location") ) {
+                        $location = new self("items/$location");
+                    }
+                }
             }
-
-            $task['content'] = $method($task['content']);
         }
 
-        // The files will be rendered into their proper orders using functions.
-        foreach ( $data['files'] as &$file ) {
-            if ( isset($file['name']) ) {
-                __S($file['name']);
-            }
+        if ( isset( $data['tasks'] ) ) {
+            // The taks of the current item will be rendered from the task form.
+            foreach ( $data['tasks'] as &$task ) {
+                __S($task['name']);
+                $method = '__';
 
-            if ( isset($file['description']) ) {
-                __S($file['description']);
-            }
+                if ( isset($task['format']) && $task['format'] == 'markdown' ) {
+                    $method = '__MD';
+                }
 
-            $file['path'] = get_file($file['path']);
+                $task['content'] = $method($task['content']);
+            }
+        }
+
+        if ( isset( $data['files'] ) ) {
+            // The files will be rendered into their proper orders using functions.
+            foreach ( $data['files'] as &$file ) {
+                if ( isset($file['name']) ) {
+                    __S($file['name']);
+                }
+
+                if ( isset($file['description']) ) {
+                    __S($file['description']);
+                }
+
+                $file['path'] = get_file($file['path']);
+            }
         }
 
         //  Transform the groups into individual yamldata objects. In so doing,
@@ -112,12 +120,12 @@ class YamlData implements ArrayAccess {
             $url = '';
 
             foreach ( $data['groups'] as $group ) {
-                $url .= $group->machine_name . '/';
+                $url .= $group->machineName . '/';
             }
 
-            $this->data['url'] = $url . '/' . $this->machine_name;
+            $data['url'] = $data['group']['url'] . '/' . $this->machineName;
         } else {
-            $this->data['url'] = $this->machine_name;
+            $data['url'] = $this->machineName;
         }
 
         $this->data = $data;
