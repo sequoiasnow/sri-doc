@@ -1,15 +1,35 @@
 <?php
 /**
- * Escapes a given string for html special chars.
+ * Escapes a given string for html special chars. Preserves tags.
  *
- * @param string $data
+ * @link http://stackoverflow.com/questions/1364933/htmlentities-in-php-but-preserving-html-tags
+ *
+ * @param string $htmlText
+ * @param int $ent
  *
  * @return string
  */
-function __($data) {
-    return htmlspecialchars($data);
-}
+function __($htmlText, $ent = 0) {
+    if ( ! $ent ) $ent = ENT_COMPAT | ENT_HTML401;
 
+    $matches = Array();
+    $sep = '###HTMLTAG###';
+
+    preg_match_all(":</{0,1}[a-z]+[^>]*>:i", $htmlText, $matches);
+
+    $tmp = preg_replace(":</{0,1}[a-z]+[^>]*>:i", $sep, $htmlText);
+    $tmp = explode($sep, $tmp);
+
+    for ($i=0; $i<count($tmp); $i++)
+        $tmp[$i] = htmlentities($tmp[$i], $ent, 'UTF-8', false);
+
+    $tmp = join($sep, $tmp);
+
+    for ($i=0; $i<count($matches[0]); $i++)
+        $tmp = preg_replace(":$sep:", $matches[0][$i], $tmp, 1);
+
+    return $tmp;
+}
 /**
  * Escapes a string of html special chars and prints it.
  *
@@ -36,8 +56,8 @@ function __S(&$data) {
  *
  * @return string
  */
-function __e($data) {
-    return htmlentities($data);
+function __e($string) {
+    return htmlentities($string);
 }
 
 /**

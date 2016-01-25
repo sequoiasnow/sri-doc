@@ -25,5 +25,13 @@
 
     </section>
 
+    <section id="page">
+
+        <?php include 'sidebar.php'; ?>
+
+        <?php include 'content.php'; ?>
+
+    </section> <!-- #page -->
+
 </body>
 </html>
