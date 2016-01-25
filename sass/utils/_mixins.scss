@@ -63,11 +63,10 @@
   }
 }
 
-/// Responds to multiple posts as identified by wordpress.
-/// @content
-/// @require $multiple-post
-@mixin multiple-posts {
-  #{$multiple-post} & {
-    @content;
-  }
+
+/// Includes a compass box shadow that shows the content shadow as expressed
+/// as a variable
+/// @require $content-shadow
+@mixin content-shadow {
+  @include box-shadow(unquote($content-shadow));
 }

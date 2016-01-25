@@ -1,0 +1,37 @@
+/**
+ * Keep the page in the center of the screen in accordance to the max-page-width
+ * specified.
+ *
+ * The page also specifies that the contents should display in the proper two
+ * column layout.
+ */
+#page {
+  @include display-flex;
+  @include justify-content(space-between);
+  width: 100%;
+  max-width: $max-page-width;
+  height: 100vw;
+  margin: 0 auto;
+}
+
+/**
+ * Show the sidebar and the content as similiarly scorllable and similairly
+ * differentitated from the page background using a shadow.
+ */
+#sidebar, #content {
+  @include content-shadow;
+  height: 100%;
+  overflow-y: scroll;
+  padding: $padding-val;
+}
+
+/**
+ * Differentiate the sidebar from the content, one is smaller than the other.
+ */
+#sidebar {
+  width: 200px;
+}
+
+#content {
+  width: $max-page-width - 200px - 5px; /* 5px for margin */
+}

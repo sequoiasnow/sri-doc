@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="dist/css/main.css" />
 
+    <title><?php print $data['name']; ?></title>
 </head>
 <body>
     <section id="primary-nav">

@@ -75,6 +75,15 @@ $theme-bgcolor: color('lightgrey');
 /// The color used throught the theme as the dark background color
 $dark-bgcolor: rgb(40, 40, 46);
 
+/// The box-shadow for the content, this is used throught the site to
+/// distinuish content from not content
+$content-shadow: '0px 1px 2px 0px rgba(0, 0, 0, 0.15)';
+
+/// Color for theme borders through the site that allow the border to easily
+/// differentiate from the background.
+$border-color: rgb(216, 219, 221);
+
+
 /// The color for site content, where text or other elements are concerned.
 $content-bgcolor: color('white');
 
@@ -130,8 +139,8 @@ $social-icons: (
   'instagram': '\f16d'
 );
 
-/// An identifier for the body that contains multiple posts.
-$multiple-post: ('body.search-results', 'body.archive', 'body.category');
-
 /// An identifier for a gap of pixels. Primary padding value.
 $padding-val: 20px;
+
+/// Defines the width of the page as a default.
+$max-page-width: 960px;
