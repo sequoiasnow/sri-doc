@@ -1,10 +1,20 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,100,200,600);
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 @import url(https://fonts.googleapis.com/css?family=EB+Garamond);
-@import url(https://fonts.googleapis.com/css?family=Cousine:400,700);
+body.not-found {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
 /**
  * Allow for complete page experience and make content font a default sitewide.
  *
  * 1. Use flexbox to maintian consistnacy.
+ * 2. Allow for visually distinct content areas.
  */
 body, html {
   display: -webkit-flex;
@@ -13,17 +23,20 @@ body, html {
   -webkit-flex-direction: column;
   flex-direction: column;
   /* 1 */
+  background-color: #f2f2f2;
+  /* 2 */
   width: 100%;
   margin: 0;
   padding: 0;
-  font-family: "EB Garamond", serif;
+  font-family: "Raleway", "Helvetica", "Avenir", sans-serif;
 }
 
 /**
  * Make largest of headings.
  */
 h1 {
-  font-size: 80px;
+  font-size: 40px;
+  font-size: 2.5rem;
   margin: 20px auto;
 }
 
@@ -31,7 +44,8 @@ h1 {
  * Make still large heading.
  */
 h2 {
-  font-size: 54px;
+  font-size: 30px;
+  font-size: 1.875rem;
   margin: 14px auto;
 }
 
@@ -39,7 +53,8 @@ h2 {
  * Make reasonable heading
  */
 h3 {
-  font-size: 34px;
+  font-size: 20px;
+  font-size: 1.25rem;
   margin: 8px auto;
 }
 
@@ -49,6 +64,100 @@ h3 {
 a {
   color: inherit;
   text-decoration: underline;
+}
+
+/**
+ * Make all sidebar lists have custom styling, the list is used purley for
+ * more comprehensible html.
+ */
+#sidebar ul {
+  padding-left: 10px;
+  list-style-type: none;
+}
+
+/**
+ * Make list items more visually distinct from list titles.
+ */
+#sidebar li {
+  font-size: 13px;
+  font-size: 0.8125rem;
+  color: #737373;
+  margin: 6px 0;
+}
+
+/**
+ * Remove some default behavior of links on the side of the sidebar.
+ */
+#sidebar a {
+  text-decoration: none;
+}
+
+/**
+ * Style the default content font size as a bit more spacious to allow for
+ * easier reading.
+ */
+#content {
+  font-size: 14px;
+  font-size: 0.875rem;
+}
+
+#content p {
+  font-size: 14px;
+  font-size: 0.875rem;
+  line-height: 1.4em;
+}
+
+/**
+ * Give the title of the current item distinction compared to its peers.
+ */
+#content #item-title h1 {
+  font-size: 40px;
+  font-size: 2.5rem;
+}
+
+/**
+ * Alow for visually distinct content sections, this is done with a
+ * border applied to the top.
+ */
+#content .content-section {
+  border-top: 1px solid #d8dbdd;
+  margin-top: 20px;
+}
+
+/**
+ * Allows for the slightly less austentatious yet still impossing
+ * section titles.
+ */
+#content .section-title {
+  font-size: 30px;
+  font-size: 1.875rem;
+  font-weight: 400;
+}
+
+/**
+ * Show the tags title to be similair to the section title.
+ */
+/**
+ * Navigation bar that goes across the top of the screen , black in color and
+ * flat in protrayal, no box shadow.
+ */
+#primary-nav {
+  width: 100%;
+  height: 20px;
+  position: fixed;
+  top: 10px;
+  left: 0;
+  right: 0;
+}
+
+/**
+ * Ensure that the navigation does not exceed the expected width of the element.
+ */
+#primary-nav .wraper {
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+  height: 100%;
 }
 
 /**
@@ -65,8 +174,14 @@ a {
   justify-content: space-between;
   width: 100%;
   max-width: 960px;
-  height: 100vw;
+  height: 100vh;
+  height: calc(100vh - 60px);
+  /* Height of nav */
   margin: 0 auto;
+  margin-top: 40px;
+  /* Height of nav */
+  margin-bottom: 20px;
+  overflow: hidden;
 }
 
 /**
@@ -77,7 +192,8 @@ a {
   -moz-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
   -webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
-  height: 100%;
+  border: 1px solid #e9e9e9;
+  background-color: white;
   overflow-y: scroll;
   padding: 20px;
 }
@@ -90,6 +206,26 @@ a {
 }
 
 #content {
-  width: 755px;
+  width: 740px;
   /* 5px for margin */
+  margin-left: 20px;
+}
+
+body.not-found * {
+  font-family: "EB Garamond", serif;
+}
+
+/**
+ * Center the contents of the 404 page in the center.
+ */
+body.not-found {
+  text-align: center;
+}
+
+/**
+ * Make the h1 sufficiently large
+ */
+body.not-found h1 {
+  font-size: 100px;
+  font-size: 6.25rem;
 }

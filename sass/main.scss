@@ -11,4 +11,11 @@
   'base/typography';
 
 @import
+  'components/sidebar',
+  'components/content';
+
+@import
   'layout/item';
+
+@import
+  'page/404';

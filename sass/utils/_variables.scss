@@ -70,7 +70,7 @@ $highlight-bgcolor: $light-text-color;
 $focus-text-color: color('lightgrey');
 
 /// The color of the background of the site.
-$theme-bgcolor: color('lightgrey');
+$theme-bgcolor: rgb(242, 242, 242);
 
 /// The color used throught the theme as the dark background color
 $dark-bgcolor: rgb(40, 40, 46);
@@ -98,13 +98,13 @@ $breakpoints: (
 );
 
 /// The standard font used for typical content.
-$content-font: ('EB Garamond', serif);
+$content-font: ('Raleway', 'Helvetica', 'Avenir', sans-serif);
 
 /// The standard font for all headings .
-$heading-font: ('Cousine', 'Montserrat', sans-serif);
+$heading-font: ('Raleway', 'Helvetica', 'Avenir', sans-serif);
 
 /// Fonts for alternate circumstances, like blockquotes or other headins.
-$alternate-font: (Georgia, serif);
+$alternate-font: ('EB Garamond', serif);
 
 /// Font size for site content.
 $content-font-size: 20px;

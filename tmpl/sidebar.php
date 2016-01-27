@@ -3,52 +3,59 @@
  * Define the default sidebar that is shown with the asortments of tasks
  * and related documents present throught the site.
  */
-?>
+
+if ( isset( $data['tasks'] ) || isset( $data['files'] ) ) : ?>
 <section id="sidebar">
 
-    <div class="section-title">
+    <?php if ( isset( $data['tasks'] ) ) : ?>
 
-        <span class="title">Tasks</span>
+        <div class="section-title">
 
-    </div>
+            <span class="title">Tasks</span>
 
-    <ul id="tasks">
+        </div>
 
-        <?php foreach ( $data['tasks'] as $task ) : ?>
+        <ul id="tasks">
 
-            <li class="task">
+            <?php foreach ( $data['tasks'] as $task ) : ?>
 
-                <a href="#<?php print trim($task['name']); ?>">
-                    <?php print $task['name']; ?>
-                </a>
+                <li class="task">
 
-            </li> <!-- .task -->
+                    <a href="#<?php print strtolower(preg_replace('/\s+/', '', $task['name'])); ?>">
+                        <?php print $task['name']; ?>
+                    </a>
 
-        <?php endforeach; ?>
+                </li> <!-- .task -->
 
-    </ul> <!-- #tasks -->
+            <?php endforeach; ?>
 
-    <div class="section-title">
+        </ul> <!-- #tasks -->
+    <?php endif; ?>
 
-        <span class="title">Files</span>
+    <?php if ( isset( $data['files'] ) ) : ?>
+        <div class="section-title">
 
-    </div>
+            <span class="title">Files</span>
 
-    <ul id="files">
+        </div>
 
-        <?php foreach ( $data['files'] as $file ) : ?>
+        <ul id="files">
 
-            <li class="file">
+            <?php foreach ( $data['files'] as $file ) : ?>
 
-                <a href="<?php print $file['path']; ?>" class="title" download>
-                    <?php print $file['name']; ?>
-                </a>
+                <li class="file">
 
-                <span class="description"></span>
+                    <a href="<?php print $file['path']; ?>" class="title" download>
+                        <?php print $file['name']; ?>
+                    </a>
 
-            </li>
+                    <span class="description"></span>
 
-        <?php endforeach; ?>
-    </ul> <!-- #files -->
+                </li>
+
+            <?php endforeach; ?>
+        </ul> <!-- #files -->
+    <?php endif; ?>
 
 </section> <!-- #sidebar -->
+<?php endif; ?>

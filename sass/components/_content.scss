@@ -1,0 +1,42 @@
+/**
+ * Style the default content font size as a bit more spacious to allow for
+ * easier reading.
+ */
+#content {
+  @include font-size(14px);
+}
+
+#content p {
+  @include font-size(14px);
+  line-height: 1.4em;
+}
+
+/**
+ * Give the title of the current item distinction compared to its peers.
+ */
+#content #item-title h1 {
+  @include font-size(40px);
+}
+
+/**
+ * Alow for visually distinct content sections, this is done with a
+ * border applied to the top.
+ */
+#content .content-section {
+  border-top: 1px solid $border-color;
+  margin-top: 20px;
+}
+
+/**
+ * Allows for the slightly less austentatious yet still impossing
+ * section titles.
+ */
+#content .section-title {
+  @include font-size(30px);
+  font-weight: 400;
+}
+
+/**
+ * Show the tags title to be similair to the section title.
+ */
+//#content article.

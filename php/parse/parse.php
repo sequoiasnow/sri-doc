@@ -11,7 +11,6 @@ class YamlData implements ArrayAccess {
         return file_exists("data/$relPath.yml");
     }
 
-
     /**
      * At this point all data is completly raw. In order to format it, it will
      * go through a process of editing the existing data comparing what is to
@@ -101,7 +100,12 @@ class YamlData implements ArrayAccess {
         //  of 'parents'
         if ( isset( $data['group'] ) ) {
             $data['group'] = new self('groups/' . $data['group']);
-            $data['groups'] = array();
+            $data['groups'] = array(
+                array(
+                    'name' => 'Home',
+                    'url'  => '/',
+                )
+            );
 
             $currentGroup = $data['group'];
 
@@ -120,7 +124,9 @@ class YamlData implements ArrayAccess {
             $url = '';
 
             foreach ( $data['groups'] as $group ) {
-                $url .= $group->machineName . '/';
+                if ( isset( $group->machineName ) ) {
+                    $url .= $group->machineName . '/';
+                }
             }
 
             $data['url'] = $data['group']['url'] . '/' . $this->machineName;

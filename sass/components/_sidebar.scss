@@ -1,0 +1,24 @@
+/**
+ * Make all sidebar lists have custom styling, the list is used purley for
+ * more comprehensible html.
+ */
+#sidebar ul {
+  padding-left: 10px;
+  list-style-type: none;
+}
+
+/**
+ * Make list items more visually distinct from list titles.
+ */
+#sidebar li {
+  @include font-size(13px);
+  color: rgb(115, 115, 115);
+  margin: 6px 0;
+}
+
+/**
+ * Remove some default behavior of links on the side of the sidebar.
+ */
+#sidebar a {
+  text-decoration: none;
+}

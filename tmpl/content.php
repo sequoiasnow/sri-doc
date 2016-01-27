@@ -1,24 +1,25 @@
 <section id="content">
+
     <div id="item-title">
 
-        <h1 class="title"><?php print $data['title']; ?></h1>
+        <h1 class="title"><?php print $data['name']; ?></h1>
 
     </div>
 
     <div id="item-description">
 
-        <?php print $data['description']; ?>
-
+        <p><?php print $data['description']; ?></p>
     </div>
 
+
     <?php if ( isset( $data['images'] ) ) : ?>
-        <div class="section-title">
-
-            <span class="title">Images</span>
-
-        </div>
-
         <div id="image-gallery" class="content-section">
+
+            <div class="section-title">
+
+                <span class="title">Images</span>
+
+            </div>
 
             <?php foreach ( $data['images'] as $image ) : ?>
 
@@ -41,7 +42,7 @@
 
                         <section class="description">
 
-                            <?php print $image['description']; ?>
+                            <p><?php print $image['description']; ?></p>
 
                         </section>
 
@@ -55,31 +56,25 @@
 
     <?php endif; ?>
 
-    <div class="section-title">
+    <?php if ( isset( $data['tasks'] ) ) : ?>
+        <?php foreach ( $data['tasks'] as $task ) : ?>
 
-        <span class="title">Tasks</span>
+            <div id="<?php print strtolower(preg_replace('/\s+/', '', $task['name'])); ?>" class="task-content content-section">
 
-    </div>
+                <div class="section-title">
 
-    <?php foreach ( $data['tasks'] as $task ) : ?>
+                    <span class="title"><?php print $task['name']; ?></span>
 
-        <article id="<?php print trim($taks['name']); ?>" class="task-content content-section">
+                </div>
 
-            <header class="title-container">
+                <section class="content">
 
-                <span class="title">
-                    <?php print $task['name']; ?>
-                </span>
+                    <p><?php print $task['content']; ?></p>
 
-            </header>
+                </section>
 
-            <section class="content">
+            </div> <!-- .task-content -->
 
-                <?php print $task['content']; ?>
-
-            </section>
-
-        </article> <!-- .task-content -->
-
-    <?php endforeach; ?>
+        <?php endforeach; ?>
+    <?php endif; ?>
 </section> <!-- .content -->

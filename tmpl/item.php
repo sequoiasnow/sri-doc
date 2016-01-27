@@ -1,29 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="dist/css/main.css" />
+    <link rel="stylesheet" href="<?php print WEB_ROOT; ?>/dist/css/main.css" />
 
     <title><?php print $data['name']; ?></title>
 </head>
 <body>
     <section id="primary-nav">
 
-        <div id="breadcrumb">
+        <div class="wraper">
 
-            <?php foreach ( $data['groups'] as $group ) : ?>
+            <div id="breadcrumb">
 
-                <div class="item">
-                    <a href="<?php print $group['url']; ?>">
-                        <?php print $group['name']; ?>
-                    </a>
-                </div>
+                <?php if ( $data['groups'] ) : ?>
 
-            <?php endforeach; ?>
+                    <?php foreach ( $data['groups'] as $group ) : ?>
 
-        </div> <!-- #breadcrumb -->
+                        <div class="item">
+                            <a href="<?php print $group['url']; ?>">
+                                <?php print $group['name']; ?>
+                            </a>
+                        </div>
 
-        <!-- Rendered by react -->
-        <div id="search-container"></div>
+                    <?php endforeach; ?>
+
+                <?php endif; ?>
+
+            </div> <!-- #breadcrumb -->
+
+            <!-- Rendered by react -->
+            <div id="search-container"></div>
+
+        </div> <!-- .wraper -->
 
     </section>
 

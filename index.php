@@ -1,4 +1,8 @@
 <?php
+// Define the web root of the site so that no confusion of site resources can
+// result.
+define('WEB_ROOT', 'http://localhost/~sequoiasnow/work/doc');
+
 // Include all dependencies installed via composer.
 require __DIR__ . '/vendor/autoload.php';
 
@@ -16,7 +20,7 @@ $path = isset($_GET['path']) ? $_GET['path'] : '';
 
 
 // Determine the last component of the path.
-if ( preg_match('/\/?(.+)$/', $path, $matches) ) {
+if ( preg_match('/\/?([^\/]+)(?:#.+)?(?:\?.+)?$/', $path, $matches) ) {
     $component = $matches[1];
 
     $data = find('items', $component);
@@ -24,7 +28,7 @@ if ( preg_match('/\/?(.+)$/', $path, $matches) ) {
 
     if ( ! $data ) {
         $data = find('groups', $component);
-        $dataType = 'group';
+        $dataType = 'item';
     }
 
     if ( ! $data ) {

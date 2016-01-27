@@ -47,7 +47,7 @@ tasks:
         </ol>
 
     - name: Lorem Ipsum
-      format: 'markdown'
+      format: markdown
       content: |
         #Lorem Ipsum Dolor Sit Amet C
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua

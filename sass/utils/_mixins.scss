@@ -42,6 +42,7 @@
 @mixin content-font {
   @include font-size($content-font-size);
   font-family: $content-font;
+  font-weight: 100;
 }
 
 /// Creates a filling background for any css image. Also provides a method for
