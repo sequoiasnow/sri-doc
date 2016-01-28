@@ -103,7 +103,7 @@ class YamlData implements ArrayAccess {
             $data['groups'] = array(
                 array(
                     'name' => 'Home',
-                    'url'  => '/',
+                    'url'  => WEB_ROOT,
                 )
             );
 

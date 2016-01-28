@@ -20,7 +20,7 @@ $path = isset($_GET['path']) ? $_GET['path'] : '';
 
 
 // Determine the last component of the path.
-if ( preg_match('/\/?([^\/]+)(?:#.+)?(?:\?.+)?$/', $path, $matches) ) {
+if ( preg_match('/\/?([^\/]+)(?:#.*)?(?:\?.*)?$/', $path, $matches) ) {
     $component = $matches[1];
 
     $data = find('items', $component);
@@ -36,4 +36,6 @@ if ( preg_match('/\/?([^\/]+)(?:#.+)?(?:\?.+)?$/', $path, $matches) ) {
     } else {
         load_tmpl($dataType, $data);
     }
+} else {
+    load_tmpl('home');
 }
