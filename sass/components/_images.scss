@@ -1,0 +1,79 @@
+/**
+ * Show the image gallery in the center of the page and use flexboxes to show
+ * the images in a nice pattern.
+ */
+#images {
+  @include display-flex;
+  @include flex-flow(row wrap);
+  width: 100%;
+}
+
+/**
+ * Show an image with the proper background and description shown as the
+ * contents.
+ *
+ * Also allow for those contents to be further visible on hover.
+ */
+#images .image {
+  @include box-sizing(border-box);
+  @include centered-background;
+  width: calc(100% / 4);
+  position: relative;
+  border: 1px solid $content-bgcolor;
+}
+
+
+
+/**
+ * Remove the spacer image from display, it is used purley to aproximate the
+ * size of the image.
+ */
+#images img.spacer-image {
+  width: 100%;
+  height: auto;
+  z-index: -1;
+  opacity: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/**
+ * Absolutly position the image contents, this allowes for an overflow of the
+ * actual actual contents of the images.
+ */
+#images .content {
+  @include box-sizing(border-box);
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: color('white');
+}
+
+/**
+ * Show the size of the title and allow it to be offset from the background
+ * with a white color.
+ */
+#images .title {
+  @include font-size(20px);
+  color: color('white');
+}
+
+/**
+ * Allow for the description to be visible only on hover.
+ */
+#images .description {
+  @include transition(all 0.8s);
+  max-height: 0;
+  overflow: hidden;
+}
+
+/**
+ * Show description on hover.
+ */
+#images .image:hover .description {
+  max-height: 300px;
+}

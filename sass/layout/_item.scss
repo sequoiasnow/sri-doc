@@ -50,6 +50,7 @@
   border: 1px solid rgb(233, 233, 233);
   background-color: $content-bgcolor;
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   padding: $padding-val;
 }
 

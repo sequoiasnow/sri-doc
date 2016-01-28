@@ -45,7 +45,7 @@ if ( isset( $data['tasks'] ) || isset( $data['files'] ) ) : ?>
 
                 <li class="file">
 
-                    <a href="<?php print $file['path']; ?>" class="title" download>
+                    <a href="<?php print $file['path']; ?>" class="title" target="_blank">
                         <?php print $file['name']; ?>
                     </a>
 

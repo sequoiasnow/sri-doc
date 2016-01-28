@@ -21,36 +21,45 @@
 
             </div>
 
-            <?php foreach ( $data['images'] as $image ) : ?>
+            <div id="images">
 
-                <article class="image" style="backgroung-image: url('<?php print $image['file']; ?>')">
+                <?php foreach ( $data['images'] as $image ) : ?>
 
+                    <article class="image" style="background-image: url('<?php print $image['file']; ?>')">
 
-                    <?php if ( isset( $image['title'] ) ) : ?>
+                        <img class="spacer-image" src="<?php print $image['file']; ?>" />
 
-                        <header class="title-container">
+                        <div class="content">
 
-                            <span class="title">
-                                <?php print $image['title']; ?>
-                            </span>
+                            <?php if ( isset( $image['name'] ) ) : ?>
 
-                        </header>
+                                <header class="title-container">
 
-                    <?php endif; ?>
+                                    <span class="title">
+                                        <?php print $image['name']; ?>
+                                    </span>
 
-                    <?php if ( isset( $image['description'] ) ) : ?>
+                                </header>
 
-                        <section class="description">
+                            <?php endif; ?>
 
-                            <p><?php print $image['description']; ?></p>
+                            <?php if ( isset( $image['description'] ) ) : ?>
 
-                        </section>
+                                <section class="description">
 
-                    <?php endif; ?>
+                                    <p><?php print $image['description']; ?></p>
 
-                </article> <!-- .image -->
+                                </section>
 
-            <?php endforeach; ?>
+                            <?php endif; ?>
+
+                        </div> <!-- .content -->
+
+                    </article> <!-- .image -->
+
+                <?php endforeach; ?>
+
+            </div> <!-- #images -->
 
         </div> <!-- #image-container -->
 

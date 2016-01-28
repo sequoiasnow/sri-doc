@@ -17,11 +17,20 @@ images:
       description: >
         Luna, its pretty cool, both in the slang sense and the actual sense.
 
-      file: 'moon.png'
+      file: 'moon.jpg'
 
     - name: Mars
       description: That angry looking red planet. Get the pun?
-      file: 'mars.png'
+      file: 'mars.jpg'
+    - name: Mars
+      description: That angry looking red planet. Get the pun?
+      file: 'mars.jpg'
+    - name: Mars
+      description: That angry looking red planet. Get the pun?
+      file: 'mars.jpg'
+    - name: Mars
+      description: That angry looking red planet. Get the pun?
+      file: 'mars.jpg'
 
 
 # Locations where the current item is used. Put this in with info of the
@@ -74,8 +83,8 @@ tasks:
 files:
     - name: Example File 1
       description: A file that shows how to use this example.
-      path: example-item/file1.pdf
+      path: file1.pdf
 
     - name: Example File 2
       description: Another file that shows how to use this example.
-      path: example-item/file2.pdf
+      path: file2.pdf

@@ -1,0 +1,19 @@
+/**
+ * Make the breadcrumb trail a line rather than a typical vertical list.
+ */
+#breadcrumb {
+  @include display-flex;
+  @include flex-direction(row);
+}
+
+/**
+ * Make each breadcrumb item show with an arrow following and some margins
+ * to make them distinct.
+ */
+#breadcrumb > .item {
+
+  &:not(:last-child)::after {
+    content: '>';
+    margin: 0 6px;
+  }
+}

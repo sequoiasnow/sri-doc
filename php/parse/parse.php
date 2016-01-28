@@ -8,7 +8,7 @@ class YamlData implements ArrayAccess {
      * @return bool
      */
     public static function isFile($relPath) {
-        return file_exists("data/$relPath.yml");
+        return file_exists("data/$relPath.yml") || file_exists("data/$relPath");
     }
 
     /**
@@ -144,6 +144,10 @@ class YamlData implements ArrayAccess {
      * @param string $file
      */
     public function __construct($file) {
+        if ( strpos( $file, '.yml' ) !== false ) {
+            $file = str_replace( '.yml', '', $file );
+        }
+
         $this->machineName = $file;
         $this->content = file_get_contents("data/{$file}.yml");
         $this->data    = __YML($this->content);

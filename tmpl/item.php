@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="stylesheet" href="<?php print WEB_ROOT; ?>/dist/css/main.css" />
-
-    <title><?php print $data['name']; ?></title>
-</head>
-<body>
+<?php include 'header.php'; ?>
     <section id="primary-nav">
 
         <div class="wraper">
@@ -42,6 +35,4 @@
         <?php include 'content.php'; ?>
 
     </section> <!-- #page -->
-
-</body>
-</html>
+<?php include 'footer.php'; ?>
